@@ -35,7 +35,7 @@ SetSharedLootTable('hound_skirmisher',
 })
 
 local function fn()
-    local isnt = CreateEntity()
+    local inst = CreateEntity()
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
@@ -60,7 +60,7 @@ local function fn()
 
     inst:AddComponent("locomotor")
     inst.components.locomotor.walkspeed = 3
-    inst.compatible.locomotor.runspeed = 6
+    inst.components.locomotor.runspeed = 6
 
     inst:SetStateGraph("SGhound")
 
@@ -75,7 +75,7 @@ local function fn()
     inst.components.health:SetMaxHealth(100)
 
     inst:AddComponent("combat")
-    int.components.combat.hiteffectsymbol = "body"
+    inst.components.combat.hiteffectsymbol = "body"
 
     inst:AddComponent("inspectable")
 
@@ -88,5 +88,5 @@ local function fn()
     return inst
 end
 
-return Prefab("hound_skirmisher", fn, assets, prefabs),
+return Prefab("hound_skirmisher", fn, assets, prefabs)
 

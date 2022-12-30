@@ -1,8 +1,5 @@
 PrefabFiles = {
-	"skirmisher"
-}
-
-Assets = {
+	"skirmisher",
 }
 
 local require = GLOBAL.require
