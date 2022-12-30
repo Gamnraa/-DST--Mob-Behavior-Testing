@@ -13,7 +13,7 @@ local prefabs =
     "monstermeat",
 }
 
-local brain = require("brains/houndbrain")
+local brain = require("brains/skirmisherbrain")
 
 local sounds =
 {
@@ -49,7 +49,7 @@ local function fn()
     inst.Transform:SetFourFaced()
 
     inst.AnimState:SetBank("hound")
-    inst.AnimState:SetBuild("hound_build")
+    inst.AnimState:SetBuild("hound_ocean")
     inst.AnimState:PlayAnimation("idle")
 
     inst.entity:SetPristine()
@@ -62,13 +62,13 @@ local function fn()
     inst.components.locomotor.walkspeed = 3
     inst.components.locomotor.runspeed = 6
 
-    inst:SetStateGraph("SGhound")
+    inst:SetStateGraph("SGskirmisher")
 
     inst:AddComponent("lootdropper")
     inst.components.lootdropper:SetChanceLootTable("hound_skirmisher")
 
-    MakeMediumBurnableCharacter(inst, "body")
-    MakeMediumFreezableCharacter(inst, "body")
+    MakeMediumBurnableCharacter(inst, "hound_body")
+    MakeMediumFreezableCharacter(inst, "hound_body")
     inst.components.burnable.fammability = 0.33 --typo??
 
     inst:AddComponent("health")
