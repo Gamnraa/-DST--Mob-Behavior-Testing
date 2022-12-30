@@ -38,37 +38,7 @@ local states = {																				-- The 'states' table for storing states
             RemovePhysicsColliders(inst)														-- Stop colliding
             inst.components.lootdropper:DropLoot(Vector3(inst.Transform:GetWorldPosition()))	-- Drop loot
         end,
-    },																							-- /\ --		A STATE			-- /\ --
-
-    State{																						-- \/ --		A STATE 		-- \/ --
-        name = "premoving",																		-- The name of a state
-        tags = {"moving", "canrotate"},															-- The tags of the state
-
-        onenter = function(inst)																-- On enter
-            inst.components.locomotor:WalkForward()												-- Move forward (walk speed = 3)
-            inst.AnimState:PlayAnimation("walk_pre")											-- Play the 'walk_pre' animation
-        end,
-
-        events =																				-- Table of events for this state
-        {
-            EventHandler("animover", function(inst) inst.sg:GoToState("moving") end),			-- On 'animover', when the animation ends, go to the 'moving' state
-        },
-    },																							-- /\ --		A STATE			-- /\ --
-
-    State{																						-- \/ --		A STATE 		-- \/ --
-        name = "moving",																		-- The name of a state
-        tags = {"moving", "canrotate"},															-- The tags of the state
-
-        onenter = function(inst)																-- On enter
-            inst.components.locomotor:RunForward()												-- Run forward (run speed = 5)
-            inst.AnimState:PushAnimation("walk_loop")											-- Play the 'walk_loop' animation
-        end,
-
-        events =																				-- Table of events for this state
-        {
-            EventHandler("animover", function(inst) inst.sg:GoToState("moving") end),			-- On 'animover', when the animation ends, go to the 'moving' state
-        },
-    },																							-- /\ --		A STATE			-- /\ --
+    },																							-- /\ --		A STATE			-- /\ --																						-- /\ --		A STATE			-- /\ --
 
     State{																						-- \/ --		A STATE 		-- \/ --
         name = "idle",																			-- The name of a state
