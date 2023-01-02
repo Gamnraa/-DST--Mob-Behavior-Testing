@@ -50,7 +50,7 @@ local states = {																				-- The 'states' table for storing states
 
         events =
         {
-            EventHandler("animqueueover", function(inst) if math.random() < .333 then inst.components.combat:SetTarget(nil) inst.sg:GoToState("taunt") else inst.sg:GoToState("idle", "atk_pst") end end),
+            EventHandler("animqueueover",  function(inst) inst.sg:GoToState("idle", "atk_pst") end),
         },
     },																			
 
