@@ -34,6 +34,10 @@ SetSharedLootTable('hound_skirmisher',
     {'houndstooth', 0.125},
 })
 
+local function retarget(inst)
+    return FindEntity(inst, 20, function(target) return inst.components.combat:CanTarget(target) end, nil, {"wall"})
+end
+
 local function fn()
     local inst = CreateEntity()
 
@@ -51,6 +55,8 @@ local function fn()
     inst.AnimState:SetBank("hound")
     inst.AnimState:SetBuild("hound_ocean")
     inst.AnimState:PlayAnimation("idle")
+
+    inst:AddTag("hostile")
 
     inst.entity:SetPristine()
 
@@ -89,6 +95,9 @@ local function fn()
 
     inst:AddComponent("combat")
     inst.components.combat.hiteffectsymbol = "body"
+    inst.components.combat:SetDefaultDamage(TUNING.HOUND_DAMAGE)
+    inst.components.combat:SetAttackPeriod(TUNING.HOUND_ATTACK_PERIOD)
+    inst.components.combat:SetRetargetFunction(3, retarget)
 
     inst:AddComponent("inspectable")
 
