@@ -5,7 +5,7 @@ require "behaviours/panic"
 
 local MAX_CHASE_DIST = 50
 local SEE_PLAYER_DIST = 8
-local STOP_RUN_AWAY_DIST = 16
+local STOP_RUN_AWAY_DIST = 12
 
 local SkirmisherBrain = Class(Brain, function(self, inst)
     Brain._ctor(self, inst)
@@ -17,7 +17,7 @@ function SkirmisherBrain:OnStart()
         {
             WhileNode(function() return self.inst.components.hauntable ~= nil and self.inst.components.hauntable.panic end, "PanicHaunted", Panic(self.inst)),
             WhileNode(function() return self.inst.components.health.takingfiredamage end, "OnFire", Panic(self.inst)),
-            EventNode(self.inst, "attacked", RunAway(self.inst, "scarytoprey", SEE_PLAYER_DIST, STOP_RUN_AWAY_DIST)),
+            EventNode(self.inst, "attacked", RunAway(self.inst, "scarytoprey", SEE_PLAYER_DIST, STOP_RUN_AWAY_DIST + 4)),
             SequenceNode{
                 ChaseAndAttack(self.inst, MAX_CHASE_DIST),
                 RunAway(self.inst, "scarytoprey", SEE_PLAYER_DIST, STOP_RUN_AWAY_DIST),
