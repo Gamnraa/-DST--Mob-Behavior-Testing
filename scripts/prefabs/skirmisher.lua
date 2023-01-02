@@ -35,7 +35,7 @@ SetSharedLootTable('hound_skirmisher',
 })
 
 local function retarget(inst)
-    return FindEntity(inst, 20, function(target) return inst.components.combat:CanTarget(target) end, nil, {"wall"})
+    return FindEntity(inst, 40, function(target) return inst.components.combat:CanTarget(target) end, nil, {"wall"})
 end
 
 local function fn()
