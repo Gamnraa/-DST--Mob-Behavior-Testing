@@ -19,8 +19,10 @@ function SkirmisherBrain:OnStart()
             WhileNode(function() return self.inst.components.health.takingfiredamage end, "OnFire", Panic(self.inst)),
             EventNode(self.inst, "attacked", RunAway(self.inst, "scarytoprey", SEE_PLAYER_DIST, STOP_RUN_AWAY_DIST + 4)),
             SequenceNode{
-                ChaseAndAttack(self.inst, MAX_CHASE_DIST),
-                RunAway(self.inst, "scarytoprey", SEE_PLAYER_DIST, STOP_RUN_AWAY_DIST),
+                ParallelNodeAny{
+                    ChaseAndAttack(self.inst, MAX_CHASE_DIST),
+                    RunAway(self.inst, "scarytoprey", SEE_PLAYER_DIST, STOP_RUN_AWAY_DIST),
+                },
             },
             Wander(self.inst, function() return self.inst.components.knownlocations:GetLocation("home") end, 32)
         }, 1)
