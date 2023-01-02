@@ -58,6 +58,19 @@ local function fn()
         return inst
     end 
 
+    inst.sounds =
+    {
+        pant = "dontstarve/creatures/hound/pant",
+        attack = "dontstarve/creatures/hound/attack",
+        bite = "dontstarve/creatures/hound/bite",
+        bark = "dontstarve/creatures/hound/bark",
+        death = "dontstarve/creatures/hound/death",
+        sleep = "dontstarve/creatures/hound/sleep",
+        growl = "dontstarve/creatures/hound/growl",
+        howl = "dontstarve/creatures/together/clayhound/howl",
+        hurt = "dontstarve/creatures/hound/hurt",
+    }
+
     inst:AddComponent("locomotor")
     inst.components.locomotor.walkspeed = 6
     inst.components.locomotor.runspeed = 7
