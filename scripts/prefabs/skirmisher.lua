@@ -59,8 +59,8 @@ local function fn()
     end 
 
     inst:AddComponent("locomotor")
-    inst.components.locomotor.walkspeed = 3
-    inst.components.locomotor.runspeed = 6
+    inst.components.locomotor.walkspeed = 6
+    inst.components.locomotor.runspeed = 7
 
     inst:SetStateGraph("SGskirmisher")
 
